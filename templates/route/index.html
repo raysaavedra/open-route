@@ -1,0 +1,45 @@
+{% extends "base.html" %} 
+
+{% block extra_css %}
+
+
+{% endblock %}
+
+{% block extra_js %}
+
+ <script type="text/javascript">
+ 	
+ 	$(function(){
+                var map,
+			    dir;
+			 
+			map = L.map('map', {
+			    layers: MQ.mapLayer(),
+			    center: [7.06359, 125.60841],
+			    zoom: 18
+			});
+			 
+			dir = MQ.routing.directions();
+			 
+			dir.route({
+			    locations: [
+			    { latLng: { lat: 7.06359, lng: 125.60841 } },
+			    { latLng: { lat: 7.06889, lng: 125.61124 } },
+			    ]
+			});
+			 
+			map.addLayer(MQ.routing.routeLayer({
+			    directions: dir,
+			    fitBounds: true
+			}));
+
+			//map.on('click', function(e) {
+		    //alert(e.latlng);
+			//});
+    });
+ </script>
+{% endblock %}
+
+{% block main %}
+	<div id="map"></div>
+{% endblock %}
