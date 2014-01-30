@@ -1,0 +1,21 @@
+/* Sticky footer styles: http://getbootstrap.com/examples/sticky-footer-navbar/sticky-footer-navbar.css*/
+
+html,
+body {
+  height: 100%;
+}
+
+#wrap {
+  min-height: 100%;
+  height: auto;
+  margin: 0 auto -60px;
+  padding: 0 0 80px;
+}
+
+#wrap > .container {
+  padding: 60px 15px 0;
+}
+
+footer {
+  height: 60px;
+}

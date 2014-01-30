@@ -1,45 +1,80 @@
 {% extends "base.html" %} 
 
 {% block extra_css %}
-
-
-{% endblock %}
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/sticky.css">
+{% endblock extra_css %}
 
 {% block extra_js %}
+  <script type="text/javascript">
+    $(function(){
+      var map, dir;
 
- <script type="text/javascript">
- 	
- 	$(function(){
-                var map,
-			    dir;
-			 
-			map = L.map('map', {
-			    layers: MQ.mapLayer(),
-			    center: [7.06359, 125.60841],
-			    zoom: 18
-			});
-			 
-			dir = MQ.routing.directions();
-			 
-			dir.route({
-			    locations: [
-			    { latLng: { lat: 7.06359, lng: 125.60841 } },
-			    { latLng: { lat: 7.06889, lng: 125.61124 } },
-			    ]
-			});
-			 
-			map.addLayer(MQ.routing.routeLayer({
-			    directions: dir,
-			    fitBounds: true
-			}));
+      map = L.map('map', {
+        layers: MQ.mapLayer(),
+        center: [7.06359, 125.60841],
+        zoom: 18
+      });
+       
+      dir = MQ.routing.directions();
+       
+      dir.route({
+        locations: [
+          { latLng: { lat: 7.06359, lng: 125.60841 } },
+          { latLng: { lat: 7.06889, lng: 125.61124 } },
+        ]
+      });
+       
+      map.addLayer(MQ.routing.routeLayer({
+        directions: dir,
+        fitBounds: true
+      }));
 
-			//map.on('click', function(e) {
-		    //alert(e.latlng);
-			//});
+      //map.on('click', function(e) {
+      //alert(e.latlng);
+      //});
     });
  </script>
-{% endblock %}
+{% endblock extra_js %}
+
+
+{% block header %}
+  <header class="navbar" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="#" class="navbar-brand">Open Route</a>
+      </div>
+
+      <div class="collapse navbar-collapse" role="navigation">
+        <ul class="nav navbar-nav navbar-left">
+          <li class="active"><a href="#">Map</a></li>
+          <li><a href="#">Routes</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+        <form class="navbar-form navbar-right" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+
+      </div>
+
+    </div>
+  </header>
+{% endblock header %}
 
 {% block main %}
-	<div id="map"></div>
-{% endblock %}
+  <div id="map"></div>
+{% endblock main %}
+
+{% block footer %}
+  <div class="container">
+    <p>Copyright &copy; 2013&ndash;2014 <a href="#">Open-Route</a> All rights reserved.</p>
+  </div>
+{% endblock footer %}
