@@ -1,13 +1,5 @@
 sudo apt-get install binutils libproj-dev gdal-bin python-psycopg2 python-setuptools python-dev postgresql postgresql-server-dev-9.1
 
-wget http://download.osgeo.org/postgis/source/postgis-2.0.3.tar.gz
-tar xzf postgis-2.0.3.tar.gz
-cd postgis-2.0.3
-./configure
-make
-sudo make install
-cd ..
-
 wget http://download.osgeo.org/geos/geos-3.3.8.tar.bz2
 tar xjf geos-3.3.8.tar.bz2
 cd geos-3.3.8
@@ -30,6 +22,14 @@ cd ..
 wget http://download.osgeo.org/gdal/gdal-1.9.2.tar.gz
 tar xzf gdal-1.9.2.tar.gz
 cd gdal-1.9.2
+./configure
+make
+sudo make install
+cd ..
+
+wget http://download.osgeo.org/postgis/source/postgis-2.0.3.tar.gz
+tar xzf postgis-2.0.3.tar.gz
+cd postgis-2.0.3
 ./configure
 make
 sudo make install
