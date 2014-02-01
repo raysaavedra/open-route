@@ -23,3 +23,8 @@ footer .container {
   text-align: center;
   position: relative;
 }
+
+.navbar-brand {
+  font-size: 30px;
+  font-weight: bold;
+}
