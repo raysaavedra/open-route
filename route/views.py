@@ -14,5 +14,5 @@ from django.template import RequestContext
 
 
 def index(request, template='route/index.html'):
-	context = {}
-	return render_to_response(template, context, RequestContext(request))
+    context = {}
+    return render_to_response(template, context, RequestContext(request))

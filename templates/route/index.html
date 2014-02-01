@@ -1,10 +1,12 @@
-{% extends "base.html" %} 
+{% extends "index_with_footer.html" %} 
 
-{% block extra_css %}
-  <link rel="stylesheet" href="{{ STATIC_URL }}css/sticky-footer.css">
-{% endblock extra_css %}
+{% block title %}Sample Route{% endblock title %}
 
-{% block extra_js %}
+{% block extra_css_top %}
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/route.css">
+{% endblock extra_css_top %}
+
+{% block extra_js_top %}
   <script type="text/javascript">
     $(function(){
       var map, dir;
@@ -34,47 +36,26 @@
       //});
     });
  </script>
-{% endblock extra_js %}
+{% endblock extra_js_top %}
 
+{% block header_items_left %}
+<li class="active"><a href="#">Map</a></li>
+<li><a href="#">Routes</a></li>
+<li><a href="#">About</a></li>
+{% endblock header_items_left %}
 
-{% block header %}
-  <header class="navbar" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a href="#" class="navbar-brand">Open Route</a>
-      </div>
+{% block header_items_right %}
+<form class="navbar-form navbar-right" role="search">
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Search">
+  </div>
+</form>
+{% endblock header_items_right %}
 
-      <div class="collapse navbar-collapse" role="navigation">
-        <ul class="nav navbar-nav navbar-left">
-          <li class="active"><a href="#">Map</a></li>
-          <li><a href="#">Routes</a></li>
-          <li><a href="#">About</a></li>
-        </ul>
-        <form class="navbar-form navbar-right" role="search">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-          </div>
-          <button type="submit" class="btn btn-default">Submit</button>
-        </form>
-
-      </div>
-
-    </div>
-  </header>
-{% endblock header %}
+{% block sub_header_title %}
+Map
+{% endblock sub_header_title %}
 
 {% block main %}
   <div id="map"></div>
 {% endblock main %}
-
-{% block footer %}
-  <div class="container">
-    <p>Copyright &copy; 2013&ndash;2014 <a href="#">Open-Route</a> All rights reserved.</p>
-  </div>
-{% endblock footer %}

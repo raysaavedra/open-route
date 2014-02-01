@@ -1,0 +1,37 @@
+a {
+  color: #ffffff;
+}
+
+.navbar {
+  border-radius: 0;
+  background-color: #10c9fe;
+}
+
+#map { 
+  height: 500px; 
+}
+
+footer {
+  background: rgba(0,0,0,0.3);
+  background-color: #10c9fe;
+  color: #ffffff;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+footer .container {
+  text-align: center;
+  position: relative;
+}
+
+.navbar-brand {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.sub-header-title {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 30px;
+  color: #10c9fe;
+}
