@@ -5,4 +5,5 @@ from django.views.decorators.csrf import csrf_exempt
 urlpatterns = patterns('route.views',
     url(r'^$', 'index', name="route-index"),
     url(r'^add-route/$', 'add_route', name="add-route"),
+    url(r'^view-sample-route/$', 'view_sample_route', name="view-sample-route"),
 )
