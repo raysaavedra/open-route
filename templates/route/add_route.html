@@ -1,10 +1,10 @@
-{% extends "route/base.html" %} 
+{% extends "index_with_footer.html" %}
 
-{% block extra_css %}
+{% block extra_css_top %}
 <link rel="stylesheet" href="{{ STATIC_URL }}css/route/map.css">
-{% endblock extra_css %}
+{% endblock extra_css_top %}
 
-{% block extra_js %}
+{% block extra_js_top %}
   <script type="text/javascript">
 
    var map;
@@ -88,7 +88,7 @@
     
 
  </script>
-{% endblock extra_js %}
+{% endblock extra_js_top %}
 
 {% block main %}
   <div id="map"></div>
@@ -97,7 +97,8 @@
 <p>Routes: </p>
 
 <form method="POST">
-          {% csrf_token %}
+  {% csrf_token %}
+Route Name: <input type="text" name="route_name" value="" id="route_name" size="20" /></br> 
 <button type="submit" name="save">Save new route</button>
 </form>
 </div>
