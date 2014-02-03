@@ -1,0 +1,37 @@
+{% extends "mobile-base.html" %} 
+
+{% block subpage_extras %}
+  {% block extra_meta %}
+  {% endblock extra_meta %}
+  
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+  <!-- <link rel="stylesheet" href="{{ STATIC_URL }}css/route.css"> -->
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/main_with_map.css">
+  {% block extra_css_top %}
+  {% endblock extra_css_top %}
+
+  <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+  <script src="http://beta.mapquestapi.com/sdk/leaflet/v0.1/mq-map.js?key=Fmjtd%7Cluur290125%2Caa%3Do5-90zx0y "></script>
+  <script src="http://beta.mapquestapi.com/sdk/leaflet/v0.1/mq-routing.js?key=Fmjtd%7Cluur290125%2Caa%3Do5-90zx0y "></script>
+  <script src="http://www.mapquestapi.com/sdk/js/v7.0.s/mqa.toolkit.js?key=Fmjtd%7Cluur290125%2Caa%3Do5-90zx0y "></script>
+  {% block extra_js_top %}
+  {% endblock extra_js_top %}
+{% endblock subpage_extras %}
+
+{% block main_header %}
+  <div class="container">
+    <div class="navbar-header">
+      <a href="/" class="navbar-brand">
+        <img class="site-logo" src="{{ STATIC_URL }}img/open-route-logo-small.png" alt="The Open Route Project">
+      </a>
+    </div>
+  </div><!-- /.container -->
+{% endblock main_header %}
+
+{% block footer %}
+  <div class="copyright">
+    <div class="container">
+      <p>Copyright &copy; 2013&ndash;2014 <a href="/">The Open Route Project</a>. All rights reserved.</p>
+    </div>
+  </div>
+{% endblock footer %}

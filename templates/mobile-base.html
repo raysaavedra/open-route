@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{% endblock title %} | The Open Route Project</title>
+
+  <link rel="icon" href="{{ STATIC_URL }}img/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/themes/cupertino/jquery-ui.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/font-awesome.min.css">
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/sticky-footer.css">
+
+  <script src="{{ STATIC_URL }}js/jquery-1.9.1.js"></script>
+  <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script> 
+
+  {% block subpage_extras %}{% endblock subpage_extras %}
+</head>
+<body>
+  <div id="wrap">
+    <header class="navbar" role="navigation">
+    {% block main_header %}
+    {% endblock main_header %}
+    </header>
+
+    {% block sub_header %}
+    {% endblock sub_header %}
+
+    {% block side_panel %}
+    {% endblock side_panel %}
+
+    {% block main_content %}
+    {% endblock main_content %}
+
+  </div><!-- /#wrap -->
+
+  <footer>
+  {% block menu_panel %}{% endblock menu_panel %}
+  {% block footer %}{% endblock footer %}
+  </footer>
+
+  {% block extra_css_bottom %}{% endblock extra_css_bottom %}
+  {% block extra_js_bottom %}{% endblock extra_js_bottom %}
+</body>
+</html>

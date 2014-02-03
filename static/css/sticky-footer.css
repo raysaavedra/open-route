@@ -1,5 +1,16 @@
 /* Sticky footer styles: http://getbootstrap.com/examples/sticky-footer-navbar/sticky-footer-navbar.css*/
 
+/*
+instructions for values:
+
+sample footer height (fh) = 60px
+
+#wrap margin bottom == -fh
+#wrap padding == fh + 20 (or what value you desire)
+#wrap > .container padding top == fh
+
+*/
+
 html,
 body {
   height: 100%;
@@ -8,14 +19,16 @@ body {
 #wrap {
   min-height: 100%;
   height: auto;
-  margin: 0 auto -60px;
-  padding: 0 0 80px;
+  margin: 0 auto -100px;
+  padding: 0 0 120px;
+
 }
 
-#wrap > .container {
-  padding: 60px 15px 0;
+/*#wrap > .container {
+  padding: 100px 15px 0;
 }
+*/
 
 footer {
-  height: 60px;
+  height: 100px;
 }
