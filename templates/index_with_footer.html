@@ -1,0 +1,46 @@
+{% extends "base.html" %} 
+
+{% block extra_child_items %}
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/index.css">
+{% endblock extra_child_items %}
+
+{% block header %}
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="#" class="navbar-brand">Open Route</a>
+    </div>
+
+    <div class="collapse navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav navbar-left">
+        {% block header_items_left %}
+        {% endblock header_items_left %}
+      </ul>
+
+      {% block header_items_right %}
+      {% endblock header_items_right %}
+    </div>
+  </div><!-- /.container -->
+{% endblock header %}
+
+{% block sub_header %}
+  <div class="sub-header">
+    <div class="container">
+      <div class="sub-header-title">
+        {% block sub_header_title %}
+        {% endblock sub_header_title %}
+      </div>
+    </div>
+  </div>
+{% endblock sub_header %}
+
+{% block footer %}
+  <div class="container">
+    <p>Copyright &copy; 2013&ndash;2014 <a href="#">The Open Route Project</a>. All rights reserved.</p>
+  </div>
+{% endblock footer %}

@@ -1,10 +1,20 @@
+<<<<<<< HEAD
 {% extends "route/base.html" %} 
 
 {% block extra_css %}
 <link rel="stylesheet" href="{{ STATIC_URL }}css/route/map.css">
 {% endblock extra_css %}
+=======
+{% extends "index_with_footer.html" %} 
 
-{% block extra_js %}
+{% block title %}Sample Route{% endblock title %}
+>>>>>>> 56a115a4242c46b2cc22f58b06383aa337890c16
+
+{% block extra_css_top %}
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/route.css">
+{% endblock extra_css_top %}
+
+{% block extra_js_top %}
   <script type="text/javascript">
 
    var map;
@@ -13,6 +23,7 @@
    var dir = MQ.routing.directions();
    var points = [];
 
+<<<<<<< HEAD
     function onMapDblClick(e) {
      // alert("You clicked the map at " + e.latlng);
       //marker = L.marker(e.latlng, {draggable:'true'} ).addTo(map);
@@ -92,3 +103,33 @@
 {% endblock extra_js %}
 
 
+=======
+      //map.on('click', function(e) {
+      //alert(e.latlng);
+      //});
+    });
+ </script>
+{% endblock extra_js_top %}
+
+{% block header_items_left %}
+<li class="active"><a href="#">Map</a></li>
+<li><a href="#">Routes</a></li>
+<li><a href="#">About</a></li>
+{% endblock header_items_left %}
+
+{% block header_items_right %}
+<form class="navbar-form navbar-right" role="search">
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Search">
+  </div>
+</form>
+{% endblock header_items_right %}
+
+{% block sub_header_title %}
+Map
+{% endblock sub_header_title %}
+
+{% block main %}
+  <div id="map"></div>
+{% endblock main %}
+>>>>>>> 56a115a4242c46b2cc22f58b06383aa337890c16

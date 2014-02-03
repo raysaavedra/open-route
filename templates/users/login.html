@@ -1,0 +1,60 @@
+{% extends "index_with_footer.html" %} 
+
+{% block title %}Sign up{% endblock title %}
+
+{% block sub_header_title %}
+Login
+{% endblock sub_header_title %}
+
+{% block main %}
+<div class="row">
+  <!-- Login -->
+  <div class="col-md-6">
+    <form id="login" role="form">
+      <div class="form-group">
+        <input type="email" class="form-control" id="loginEmail" placeholder="Email Address" />
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" id="loginPassword" placeholder="Password" />
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" value="">
+          Remember me
+        </label>
+      </div>
+      <button id="signupButton" type="submit" class="btn btn-default">Login</button>
+    </form>
+
+  </div>
+  <!-- Sign Up -->
+  <div class="col-md-6">
+    <form id="signup" role="form">
+      <div class="form-group">
+        <input type="text" class="form-control" id="signupLastName" placeholder="Last Name" />
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="signupFirstName" placeholder="First Name" />
+      </div>
+      <div class="form-group">
+        <input type="email" class="form-control" id="signupEmail" placeholder="Enter email" />
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" id="signupPassword1" placeholder="New Password" />
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" id="signupPassword2" placeholder="Confirm Password" />
+      </div>
+      <div class="form-group">
+        <input type="date" class="form-control" id="signupBirthdate" />
+      </div>
+      <select id="signupGender" class="form-control">
+        <option>Male</option>
+        <option>Female</option>
+      </select>
+      <br />
+      <button id="signupButton" type="submit" class="btn btn-success">Sign Up</button>
+    </form>
+  </div>
+</div>
+{% endblock main %}

@@ -142,6 +142,7 @@ INSTALLED_APPS = (
     "south",
 
     #localapps
+    "users",
     "route",
 )
 
