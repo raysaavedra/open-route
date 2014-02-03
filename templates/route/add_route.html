@@ -9,20 +9,18 @@
 
    var map;
    var marker;
-   var routes = [];
    var dir = MQ.routing.directions();
    var points = [];
 
-    function onMapDblClick(e) {
+    function onMapDblClick(event) {
      // alert("You clicked the map at " + e.latlng);
       //marker = L.marker(e.latlng, {draggable:'true'} ).addTo(map);
       //marker.on('click', onMarkerClick);
-      alert('w');
-      var newlatlng = [{key:"lat", value: e.latlng.lat },{key:"lng", value: e.latlng.lng}];
-
-      for (i in newlatlng) {
-        alert("Name: " + newlatlng[i].key.toString() + " Value: " + newlatlng[i].value.toString());
-      }
+      //points.push([e.latlng.lat,e.latlng.lng]);
+      var lat = event.ll.getLatitude();
+      var lng = event.ll.getLongitude();
+      addNewRoute(lat,lng);
+      updateRoutes();
     }
 
     function addNewRoute(lat,lng){
@@ -45,7 +43,7 @@
              new MQA.MapCornerPlacement(MQA.MapCorner.TOP_LEFT, new MQA.Size(5,5))
            );
          
-          /* var options={
+            var options={
              size: { width: 150, height: 125 },
              zoom: 3,
              mapType: 'osmsat',
@@ -55,11 +53,11 @@
            map.addControl(
              new MQA.InsetMapControl(options),
              new MQA.MapCornerPlacement(MQA.MapCorner.BOTTOM_RIGHT)
-           );*/
+           );
          
            map.enableMouseWheelZoom();
          });
-    
+      
      });
 
      function updateRoutes(){
@@ -83,6 +81,7 @@
          };
         
         window.map = new MQA.TileMap(options); 
+        MQA.EventManager.addListener(map, 'doubleclick', onMapDblClick);
      }
    
 
@@ -91,4 +90,15 @@
  </script>
 {% endblock extra_js %}
 
+{% block main %}
+  <div id="map"></div>
 
+<div> 
+<p>Routes: </p>
+
+<form method="POST">
+          {% csrf_token %}
+<button type="submit" name="save">Save new route</button>
+</form>
+</div>
+{% endblock main %}

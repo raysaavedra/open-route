@@ -11,8 +11,13 @@ from django.shortcuts import (
     render_to_response,
 )
 from django.template import RequestContext
+from django.core.urlresolvers import reverse
 
 
 def index(request, template='route/index.html'):
+	context = {}
+	return render_to_response(template, context, RequestContext(request))
+
+def add_route(request, template='route/add_route.html'):
 	context = {}
 	return render_to_response(template, context, RequestContext(request))
