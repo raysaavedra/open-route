@@ -1,7 +1,7 @@
 The Open Route Project
 =====
 
-Open Route is an open source Django application using GeoDjango and Leaflet. It allows crowdsourcing for local transport routes, and also events, roadwork or obstructions that can block or reroute traffic.
+Open Route is an open source Django application using [GeoDjango](http://geodjango.org/) and [Leaflet](http://leafletjs.com/). It allows crowdsourcing for local transport routes, and also events, roadwork or obstructions that can block or reroute traffic.
 
 ### Features
 * Manage transportation routes
