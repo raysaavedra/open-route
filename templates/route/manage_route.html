@@ -1,5 +1,6 @@
 {% extends "index_with_footer.html" %}
 
+
 {% block extra_css_top %}
 <link rel="stylesheet" href="{{ STATIC_URL }}css/route/route.css">
 {% endblock extra_css_top %}
@@ -10,10 +11,27 @@
    var map;
    var marker;
    var points = [];
+   var dictRoutes = []
 
     //on map load
     $(document).ready(function() {     
      getMap();
+
+
+    $("#allroutes tr").click(function(e){
+      var data = [];
+      var target = e.srcElement || e.target;
+      var cells = target.getElementsByTagName("td");
+      while (target && target.nodeName !== "TR") {
+        target = target.parentNode;
+      }
+      if (target) {
+          var cells = target.getElementsByTagName("td");
+          for (var i = 0; i < cells.length; i++) {
+              data.push(cells[i].innerHTML);
+          }
+      }
+    });
 
      var frm = $('#form1');
       frm.submit(function () {
@@ -32,6 +50,12 @@
       });
     });
 
+    function defineAllRoutes(){
+      {% for rout in routs %}
+        alert({{rout.route_points.coords}});
+      {% endfor %}
+    }
+
     function onMapDblClick(event) {
       var lat = event.ll.getLatitude();
       var lng = event.ll.getLongitude();
@@ -42,6 +66,7 @@
         updateRoutes();
       }
     }
+
 
     function addNewRoute(lat,lng){
       points.push([lat,lng]);
@@ -114,8 +139,30 @@
   Route Name: <input type="text" name="route_name" value="" id="route_name" size="20" /></br> 
   Destination : <textarea rows="4" cols="50" name="route_destination" id="route_destination" placeholder="place, place"></textarea></br> 
   <button type="submit" name="save">Save new route</button>
-  </table>
-
+  </br>  </br> 
 </form>
+<p>All Routes: </p>
+  <table name="allroutes" id="allroutes">
+  <th>Route ID</th>
+  <th>Route Name</th>
+  <th>Destination</th>
+  <th>Route Points</th>
+        {% for route in routes %}
+        <tr id="indvroutes">
+            <td>
+                {{ route.id }}
+            </td>
+            <td>
+                {{ route.route_name }}
+            </td>
+            <td>
+                {{ route.destination }}
+            </td>
+            <td>
+                {{ route.route_points.coords }}
+            </td>
+        </tr> 
+        {% endfor %}  
+  </table>
 </div>
 {% endblock main %}

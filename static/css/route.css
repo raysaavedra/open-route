@@ -3,6 +3,10 @@ a {
   color: #ffffff;
 }
 
+a.route{
+  color: #000;
+}
+
 .navbar {
   border-radius: 0;
   background-color: #10c9fe;

@@ -17,3 +17,15 @@ psql -d template_postgis -c "GRANT ALL ON spatial_ref_sys TO PUBLIC;"
 sudo -u postgres createuser --createdb <testgis_user>
 sudo -u postgres createdb -T template_postgis -O <testgis_user> <testgis_db>
 sudo -u postgres psql <testgis_db> -c "ALTER USER <testgis_user> with password '<1234>'";
+
+#to delete db
+sudo -u postgres dropdb <dbname>
+
+#open database
+psql databasename
+
+#show tables
+\dt
+
+#describe table
+\d+ tablename

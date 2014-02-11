@@ -1,96 +1,10 @@
 {% extends "index_with_footer.html" %}
-
-{% block extra_css %}
-<link rel="stylesheet" href="{{ STATIC_URL }}css/route/map.css">
-{% endblock extra_css %}
  
 
 {% block title %}Sample Route{% endblock title %}
 
-{% block extra_css_top %}
-  <link rel="stylesheet" href="{{ STATIC_URL }}css/route.css">
-{% endblock extra_css_top %}
+{% block main %}
 
-{% block extra_js_top %}
-  <script type="text/javascript">
+<a href="{% url 'route:add-route' %}" class="route">Add new route</a>
 
-   var map;
-   var marker;
-   var routes = [];
-   var dir = MQ.routing.directions();
-   var points = [];
-
-    function onMapDblClick(e) {
-     // alert("You clicked the map at " + e.latlng);
-      //marker = L.marker(e.latlng, {draggable:'true'} ).addTo(map);
-      //marker.on('click', onMarkerClick);
-      alert('w');
-      var newlatlng = [{key:"lat", value: e.latlng.lat },{key:"lng", value: e.latlng.lng}];
-
-      for (i in newlatlng) {
-        alert("Name: " + newlatlng[i].key.toString() + " Value: " + newlatlng[i].value.toString());
-      }
-    }
-
-    function addNewRoute(lat,lng){
-      points.push([lat,lng]);
-    }
-
-    
-   $(document).ready(function() {
-
-     points.push([7.09359 ,125.60841]);
-     points.push([7.16356,125.60845]);
-     points.push([7.17356,125.60945]);
-     
-
-     getMap();
-     updateRoutes();
-     MQA.withModule('largezoom','viewoptions','geolocationcontrol','insetmapcontrol','mousewheel', function() {
-           map.addControl(
-             new MQA.LargeZoom(),
-             new MQA.MapCornerPlacement(MQA.MapCorner.TOP_LEFT, new MQA.Size(5,5))
-           );
-         
-          /* var options={
-             size: { width: 150, height: 125 },
-             zoom: 3,
-             mapType: 'osmsat',
-             minimized: false
-           };
-         
-           map.addControl(
-             new MQA.InsetMapControl(options),
-             new MQA.MapCornerPlacement(MQA.MapCorner.BOTTOM_RIGHT)
-           );*/
-         
-           map.enableMouseWheelZoom();
-         });
-    
-     });
-
-     function updateRoutes(){
-      var locations = new Array(points.length);
-       for(i = 0; i <points.length ; i++){
-            locations.push({latLng: {lat: points[i][0], lng: points[i][1]}})
-        }
-        MQA.withModule('directions', function() {
-        map.addRoute(locations, {ribbonOptions:{draggable:true, draggablepoi:true}});
-       });
-    }
-    
-     function getMap() {
-        var options={
-           elt: document.getElementById('map'),        
-           zoom: 13,                              
-           latLng: {lat:7.06359, lng: 125.60841},   
-           mtype: 'osm',                             
-           bestFitMargin: 0,             
-           zoomOnDoubleClick: false                   
-         };
-        
-        window.map = new MQA.TileMap(options); 
-     }
-
- </script>
-{% endblock extra_js_top %}
+{% endblock main %}

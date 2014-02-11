@@ -1,0 +1,18 @@
+#map { 
+  height: 500px; 
+}
+
+table#allroutes {
+    border-collapse: collapse;   
+    border:1px solid black;
+}
+#allroutes tr {
+    background-color: #eee;
+}
+#allroutes tr:hover {
+    background-color: #ccc;
+}
+
+#allroutes td:hover {
+    cursor: pointer;
+}
