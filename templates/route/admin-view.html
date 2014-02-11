@@ -1,0 +1,11 @@
+{% extends "index_with_footer.html" %}
+ 
+
+{% block title %}Sample Route{% endblock title %}
+
+{% block main %}
+
+<a href="{% url 'route:add-route' %}" class="route">Add new route</a><br>
+<a href="{% url 'route:manage-route' %}" class="route">Edit/Delete routes</a>
+
+{% endblock main %}

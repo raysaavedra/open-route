@@ -14,6 +14,12 @@ from django.contrib.gis.geos import Point, LineString
 
 def index(request, template='route/index.html'):
     context = {}
+    if request.method == "GET":
+        context['routes'] = models.route.objects.all()
+    return render_to_response(template, context, RequestContext(request))
+
+def admin_view(request, template='route/admin-view.html'):
+    context = {}
     return render_to_response(template, context, RequestContext(request))
 
 def manage_route(request, template='route/manage_route.html'):
@@ -64,7 +70,7 @@ def add_route(request, template='route/add_route.html'):
         np1 = Point(float(points[0][0:p1]),float(points[0][p1+1:]))
 
         p2 = points[len(points)-1].find(',')
-        np2 = Point(float(points[len(points)-1][0:p1]),float(points[len(points)-1][p2+1:]))
+        np2 = Point(float(points[len(points)-1][0:p2]),float(points[len(points)-1][p2+1:]))
 
         route_points = []
         i = 0
@@ -86,6 +92,6 @@ def add_route(request, template='route/add_route.html'):
     return render_to_response(template, context, RequestContext(request))
 
 
-def view_sample_route(request, template='route/view_sample_route.html'):
-    context = {}
-    return render_to_response(template, context, RequestContext(request))
+
+
+

@@ -11,12 +11,11 @@
    var map;
    var marker;
    var points = [];
-   var dictRoutes = []
+   var dictRoutes = [];
 
     //on map load
     $(document).ready(function() {     
      getMap();
-
 
     $("#allroutes tr").click(function(e){
       var data = [];
@@ -31,6 +30,15 @@
               data.push(cells[i].innerHTML);
           }
       }
+
+     points = [];
+     convertStringToArray(data[3].trim());
+     if (points.length >= 2 ){ 
+                updateRoutes();
+      }
+
+      $("#route_name").val(data[1].trim());
+      $("#route_destination").val(data[2].trim());
     });
 
      var frm = $('#form1');
@@ -50,10 +58,39 @@
       });
     });
 
-    function defineAllRoutes(){
-      {% for rout in routs %}
-        alert({{rout.route_points.coords}});
-      {% endfor %}
+    function convertStringToArray(inp){
+      var tup1="", tup2="";
+      var check=0;
+      var comcheck=0;
+      console.log(inp);
+      for(var i=0;i<inp.length-1;i++){
+          if(inp.charAt(i) == '('){
+            continue;
+          }
+          else if(inp.charAt(i) == ',' && comcheck == 0){
+              check = 1;
+              comcheck = 1;
+              continue;
+          }
+          else if(inp.charAt(i) == ',' && comcheck == 1){
+            comcheck = 0;
+            continue;
+          }
+          else if(inp.charAt(i) == ')'){
+            check=0;
+            addNewRoute(parseFloat(tup1.trim()),parseFloat(tup2.trim()));
+            tup1 = "";
+            tup2 = "";
+            continue;
+          }
+
+          if(check == 0 && typeof inp.charAt(i) != "undefined"){
+            tup1 = tup1 + inp.charAt(i);
+          }
+          else if(check == 1 && typeof inp.charAt(i) != "undefined"){
+            tup2 = tup2 + inp.charAt(i);
+          }
+      }
     }
 
     function onMapDblClick(event) {
@@ -69,7 +106,8 @@
 
 
     function addNewRoute(lat,lng){
-      points.push([lat,lng]);
+      console.log("lat:" + lat + "lng:" + lng);
+        points.push([lat,lng]);
     }
 
     function clearRoutes(){

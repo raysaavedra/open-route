@@ -12,6 +12,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
+	url(r'^$', 'index', name="route-index"),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^route/', include('route.urls', namespace='route')),
 )
